@@ -5,18 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Image implements Serializable {
+@Table(name = "images")
+public class Image{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_image")
     private String id;
-    private String title;
-    private byte[] imageData;
+    @Column(name = "image_path")
+    private String imgPath;
 }

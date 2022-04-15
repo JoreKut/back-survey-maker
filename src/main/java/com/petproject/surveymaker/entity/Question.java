@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @AllArgsConstructor
@@ -18,9 +15,14 @@ import java.util.List;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_question")
     private String id;
+    @NonNull
+    @Column(name = "text")
     private String text;
+    @OneToMany
     private List<Image> images;
     @NonNull
+    @OneToMany
     private List<ResponseOption> responseOptionList;
 }
