@@ -1,28 +1,32 @@
 package com.petproject.surveymaker.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
+@Entity
 @Table(name = "questions")
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_question")
     private String id;
     @NonNull
     @Column(name = "text")
     private String text;
-    @OneToMany
-    private List<Image> images;
+    @OneToMany(mappedBy = "question")
+    private List<Image> images = new java.util.ArrayList<>();
     @NonNull
-    @OneToMany
-    private List<ResponseOption> responseOptionList;
+    @OneToMany(mappedBy = "question")
+    private List<ResponseOption> responseOptionList = new java.util.ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "survey_id")
+    private Survey survey;
+
 }
