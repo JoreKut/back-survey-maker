@@ -15,9 +15,11 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    @Column(name = "username")
+    private Long id;
+
+    @Column(name = "user_name")
     private String username;
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-    private List<Survey> surveyList = new java.util.ArrayList<>();
+
+    @OneToMany(mappedBy = "author")
+    private List<Survey> surveyList;
 }

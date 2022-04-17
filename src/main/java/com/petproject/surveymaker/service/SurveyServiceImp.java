@@ -4,6 +4,8 @@ import com.petproject.surveymaker.entity.Survey;
 import com.petproject.surveymaker.repository.SurveyRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SurveyServiceImp implements SurveyService{
 
@@ -14,12 +16,17 @@ public class SurveyServiceImp implements SurveyService{
     }
 
     @Override
-    public Survey findSurveyById(String id) {
+    public Survey findSurveyById(Long id) {
         return surveyRepo.findAllById(id);
     }
 
     @Override
     public void addSurvey(Survey survey) {
         surveyRepo.save(survey);
+    }
+
+    @Override
+    public List<Survey> getAll() {
+        return surveyRepo.findAll();
     }
 }

@@ -15,11 +15,10 @@ import javax.persistence.*;
 public class ResponseOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     @Column(name = "is_right")
     private boolean isRight;
     @Column(name = "text")
-    @NonNull
     private String text;
 
     @ManyToOne(cascade = CascadeType.ALL)

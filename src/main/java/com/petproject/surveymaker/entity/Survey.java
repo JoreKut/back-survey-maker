@@ -3,7 +3,6 @@ package com.petproject.surveymaker.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @Builder
@@ -16,17 +15,17 @@ import java.util.List;
 public class Survey {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    @OneToMany(mappedBy = "survey")
-    private List<Question> questionList = new java.util.ArrayList<>();
+    private Long id;
+
     @Column(name = "number_of_passes")
-    private Integer number_of_passes;
+    private Integer numberOfPasses;
+
+
+    @Column(name = "shared_link")
+    private String sharedLink;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
     private User author;
-
-    @Column(name = "shared_link", unique = true)
-    private String sharedLink;
 
 }
