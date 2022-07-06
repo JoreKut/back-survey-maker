@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 public class UserDto implements Serializable {
-    private final String id;
+    private final Long id;
     private final String username;
     private final List<SurveyDto> surveyList;
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 public class SurveyDto implements Serializable {
-    private final String id;
+    private final Long id;
     private final List<QuestionDto> questionList;
     private final Integer number_of_passes;
 }

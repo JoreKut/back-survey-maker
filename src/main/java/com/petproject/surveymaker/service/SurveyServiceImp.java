@@ -17,7 +17,7 @@ public class SurveyServiceImp implements SurveyService{
 
     @Override
     public Survey findSurveyById(Long id) {
-        return surveyRepo.findAllById(id);
+        return surveyRepo.findById(id).orElse(new Survey());
     }
 
     @Override
@@ -26,7 +26,7 @@ public class SurveyServiceImp implements SurveyService{
     }
 
     @Override
-    public List<Survey> getAll() {
+    public List<Survey> findAll() {
         return surveyRepo.findAll();
     }
 }

@@ -20,14 +20,20 @@ public class SurveyController {
         return surveyService.findSurveyById(id);
     }
 
-    @GetMapping("/get-all")
-    public List<Survey> getAll(){
-        return surveyService.getAll();
+    @GetMapping("/test/{id}")
+    public Long test(@PathVariable Long id){
+        return id;
     }
 
+    @GetMapping("/get-all")
+    public List<Survey> getAll(){
+        return surveyService.findAll();
+    }
+
+
     @PostMapping("/add-survey")
-    public void addSurvey(@RequestBody Survey survey){
-        surveyService.addSurvey(survey);
+    public String addSurvey(@RequestBody Survey survey){
+        return survey.toString();
     }
 
 }

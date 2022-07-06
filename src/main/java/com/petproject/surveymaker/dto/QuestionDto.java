@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 public class QuestionDto implements Serializable {
-    private final String id;
+    private final Long id;
     private final String text;
     private final List<ImageDto> images;
     private final List<ResponseOptionDto> responseOptionList;

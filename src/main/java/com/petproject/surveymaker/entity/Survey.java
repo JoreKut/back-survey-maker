@@ -20,11 +20,10 @@ public class Survey {
     @Column(name = "number_of_passes")
     private Integer numberOfPasses;
 
-
     @Column(name = "shared_link")
     private String sharedLink;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "author_id")
     private User author;
 

@@ -7,5 +7,5 @@ import java.util.List;
 public interface SurveyService {
     Survey findSurveyById(Long id);
     void addSurvey(Survey survey);
-    List<Survey> getAll();
+    List<Survey> findAll();
 }

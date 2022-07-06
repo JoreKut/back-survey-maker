@@ -19,7 +19,15 @@ public class User {
 
     @Column(name = "user_name")
     private String username;
+    
+    @Column(name = "password")
+    private String password;
 
-    @OneToMany(mappedBy = "author")
+    @Column(name = "email")
+    private String email;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private List<Survey> surveyList;
+
+
 }

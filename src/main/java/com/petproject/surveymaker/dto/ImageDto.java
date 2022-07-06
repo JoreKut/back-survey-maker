@@ -6,6 +6,6 @@ import java.io.Serializable;
 
 @Data
 public class ImageDto implements Serializable {
-    private final String id;
+    private final Long id;
     private final String imgPath;
 }
