@@ -2,29 +2,27 @@ version: '2'
 
 services:
   app:
+    image: 'survey-maker:latest'
     build:
       context: .
-    container_name: api-test-front-back
+    container_name: 'survey-maker'
     depends_on:
-      - db
-    env_file:
-      - .env
+      - database
+    ports:
+      - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/${DB_POSTGRES_NAME}
-      - SPRING_DATASOURCE_USERNAME=${DB_POSTGRES_USER}
-      - SPRING_DATASOURCE_PASSWORD=${DB_POSTGRES_PASSWORD}
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5500/mydb
+      - SPRING_DATASOURCE_USERNAME=username
+      - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
-    ports:
-      - "${API_PORT}:8080"
-
-  db:
+  database:
     image: 'postgres:13.1-alpine'
-    container_name: postgres-test-front-back
-    environment:
-      - POSTGRES_USER=${DB_POSTGRES_USER}
-      - POSTGRES_PASSWORD=${DB_POSTGRES_PASSWORD}
+    container_name: 'postgres'
+    env_file:
+      - .env
+    volumes:
+      - ./db-data/:/var/lib/postgres/data
     ports:
-      - "5432:5432"
-
-    restart: always
+      - 5500:5432
+    restart: on-failure
