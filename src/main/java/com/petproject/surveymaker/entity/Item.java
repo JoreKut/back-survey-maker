@@ -5,20 +5,20 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "surveys")
-public class Survey {
+@Table(name = "questions")
+public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String sharedLink;
+    private String question;
+    private QuestionType questionType;
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Item> items;
+    private List<Options> options;
 }

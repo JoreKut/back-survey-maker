@@ -11,5 +11,5 @@ import java.util.Optional;
 @Repository
 public interface SurveyRepo extends JpaRepository<Survey, Long> {
     @NonNull Optional<Survey> findById(@NonNull Long id);
-
+    @NonNull Optional<Survey> findSurveyBySharedLink(String sharedLink);
 }
