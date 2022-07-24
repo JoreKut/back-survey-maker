@@ -20,23 +20,27 @@ public class SurveyController {
     public SurveyController(SurveyService surveyService) {
         this.surveyService = surveyService;
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/get-survey/{id}")
     public Survey getSurvey(@PathVariable Long id){
         return surveyService.findSurveyById(id);
     }
+    @CrossOrigin(origins = "*")
     @GetMapping("/take-a-survey/{link}")
     public Survey getSurvey(@PathVariable String link){
         return surveyService.findSurveyByLink(link);
     }
+    @CrossOrigin(origins = "*")
     @GetMapping("/get-all")
     public List<Survey> getAll(){
         return surveyService.findAll();
     }
+    @CrossOrigin(origins = "*")
     @GetMapping("/del")
     public void deleteAll(){
         surveyService.deleteAll();
     }
+    @CrossOrigin(origins = "*")
     @PostMapping("/add-survey")
     public String addSurvey(@RequestBody  Survey survey){
 
