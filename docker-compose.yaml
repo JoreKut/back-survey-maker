@@ -11,10 +11,10 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5500/SurveyMaker
-      - SPRING_DATASOURCE_USERNAME=username
-      - SPRING_DATASOURCE_PASSWORD=secret-password
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5500/SurveyMaker
+      SPRING_DATASOURCE_USERNAME: username
+      SPRING_DATASOURCE_PASSWORD: secret-password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
   database:
     image: 'postgres:13.1-alpine'
