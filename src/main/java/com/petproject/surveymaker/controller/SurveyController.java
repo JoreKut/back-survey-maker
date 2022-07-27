@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SurveyController {
 
     private final SurveyService surveyService;
@@ -21,27 +21,27 @@ public class SurveyController {
     public SurveyController(SurveyService surveyService) {
         this.surveyService = surveyService;
     }
-    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/get-survey/{id}")
     public Survey getSurvey(@PathVariable Long id){
         return surveyService.findSurveyById(id);
     }
-    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/take-a-survey/{link}")
     public Survey getSurvey(@PathVariable String link){
         return surveyService.findSurveyByLink(link);
     }
-    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/get-all")
     public List<Survey> getAll(){
         return surveyService.findAll();
     }
-    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/del")
     public void deleteAll(){
         surveyService.deleteAll();
     }
-    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/add-survey")
     public String addSurvey(@RequestBody  Survey survey){
 
