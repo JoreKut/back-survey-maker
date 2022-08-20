@@ -1,8 +1,11 @@
 package com.petproject.surveymaker.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -13,7 +16,8 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "surveys")
-public class Survey {
+@JsonIgnoreProperties(value = {"id"})
+public class Survey implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
